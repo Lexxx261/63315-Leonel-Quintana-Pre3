@@ -1,0 +1,85 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $Blanco;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  transition: top 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.nav-links {
+  display: flex;
+  list-style-type: none;
+  font-size: 23px;
+  font-weight: 600;
+
+  li {
+    @include spacing(margin-right, 2rem);
+  }
+
+  a {
+    text-decoration: none;
+    color: $Main-claro;
+    position: relative;
+    display: inline-block;
+    @include spacing(margin, 15px);
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background-color: $Main-claro;
+      transition: width 0.4s ease-out;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+
+.logo-img {
+  width: 10rem;
+}
+
+.cart {
+  color: $Main-claro;
+  border-radius: 15px;
+  border: 3px solid $Main-claro;
+  cursor: pointer;
+  font-weight: 500;
+  @include hover-transition(background-color, 0.3s, ease-in-out);
+  @include spacing(margin-right, 2rem);
+  @include spacing(padding, 5px);
+  &:hover {
+    background-color: $Main-claro;
+    color: $Blanco;
+  }
+}
+// texto para mostrar el mobile
+.Unat {
+  display: none;
+}
+.titulo{
+  color: $Main-claro;
+  @include titulo-center;
+}
+//toggle responsive
+.menu-toggle {
+  display: block;
+  flex-direction: column;
+  cursor: pointer;
+  @include spacing(padding-right, 20px);
+  &.bar {
+    height: 3px;
+    width: 25px;
+    background-color: $Main-claro;
+    margin: 4px 0;
+  }
+}

@@ -1,0 +1,23 @@
+@mixin titulo-center{
+    font-size: 3rem;
+    font-family: $fuente-secundaria;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 3px;
+}
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin spacing($property, $size) {
+    #{$property}: $size;
+}
+@mixin font-mod($size, $weight: 500, $color: $Main-oscuro) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+@mixin hover-transition($property: background-color, $duration: 0.3s, $timing: ease) {
+    transition: #{$property} #{$duration} #{$timing};
+}

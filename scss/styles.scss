@@ -1,0 +1,20 @@
+// Utilidades
+@import './utilidades/reset';
+@import './utilidades/mixins';
+
+//Variables 
+@import './variables/colores';
+@import './variables/fuente';
+
+// Global
+@import './global/header';
+@import './global/footer';
+@import './global/global';
+
+//Paginas
+@import './pages/index.scss';
+@import './pages/tienda.scss';
+
+//Responsive
+@import './mobile/mobile.scss';
+@import './mobile/tablet.scss';

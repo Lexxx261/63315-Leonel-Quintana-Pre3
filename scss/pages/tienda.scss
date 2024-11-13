@@ -1,0 +1,36 @@
+//Prod destacados
+.menu {
+  padding-top: 180px;
+  .categories {
+    display: flex;
+    justify-content: center;
+    margin-right: 2rem;
+    .category {
+      cursor: pointer;
+      height: 12rem;
+      width: 12rem;
+      font-size: 2rem;
+      flex-direction: column;
+      @include spacing(padding, 30px);
+      @include spacing(margin, 2px);
+      @include flex-center;
+
+      &:hover {
+        svg {
+          stroke: $Blanco;
+        }
+      }
+
+      svg {
+        width: 4rem;
+        height: 4rem;
+      }
+
+      &:hover {
+        background-color: $Main-claro;
+        color: $Blanco;
+        border-radius: 10px;
+      }
+    }
+  }
+}

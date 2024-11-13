@@ -1,0 +1,53 @@
+body {
+  font-family: $fuente-principal;
+  font-weight: 500;
+  color: $Main-oscuro;
+}
+h1 {
+  @include font-mod(5rem, bold, $Main-oscuro);
+  text-align: center;
+}
+h2 {
+    @include font-mod(4rem, bold, $Main-oscuro);
+  text-align: center;
+  letter-spacing: 1rem;
+  text-transform: uppercase;
+}
+// boton wpp
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  cursor: pointer;
+  @include hover-transition(background-color, 0.3s, ease);
+  @include flex-center;
+
+  &:hover {
+    background-color: #188b43;
+  }
+}
+// boton ig
+.instagram-button {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background-color: $Main-claro;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  cursor: pointer;
+  @include hover-transition(background-color, 0.3s, ease);
+  @include flex-center;
+
+  &:hover {
+    background-color: $Secundario;
+  }
+}

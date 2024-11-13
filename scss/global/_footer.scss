@@ -1,0 +1,19 @@
+.footer {
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+    height: 100px;
+
+    .logo {
+        img{
+            width: 12%;
+        }
+        p {
+            font-size: 20px;
+        }
+
+        #goTopBtn {
+            cursor: pointer;
+        }
+    }
+}

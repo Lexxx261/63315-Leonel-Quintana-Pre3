@@ -1,0 +1,92 @@
+.gallery {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+
+    button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.4);
+        border: none;
+        color: $Blanco;
+        font-size: 2rem;
+        cursor: pointer;
+        border-radius: 5px;
+        z-index: 10;
+        transition: background-color 0.3s;
+        @include spacing(padding, 10px);
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    }
+
+    .slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+        min-width: 100%;
+        height: 100%;
+        position: relative;
+        @include flex-center;
+
+        video,
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .present-content {
+        position: absolute;
+        color: $Blanco;
+
+        .text-m {
+            @include titulo-center;
+            @include font-mod(5.5rem, bold, $Blanco);
+        }
+
+        .text-p {
+            @include font-mod(2rem, 500, $Blanco);
+            text-align: center;
+            line-height: 10px;
+        }
+    }
+
+    .prev {
+        left: 10px;
+    }
+
+    .next {
+        right: 10px;
+    }
+}
+
+//nosotros
+.nosotros-content {
+    display: flex;
+    align-items: center;
+    background-image: url(../../img/Glaseado.jpg);
+    background-size: cover;
+    background-position: center;
+    @include spacing(padding, 20px);
+    height: 100%;
+
+    .nos {
+        display: flex;
+        align-items: center;
+    }
+
+    .nosotros-text {
+        @include spacing(padding, 2rem);
+        color: $Main-oscuro;
+    }
+}
+
+//Prod destacados
