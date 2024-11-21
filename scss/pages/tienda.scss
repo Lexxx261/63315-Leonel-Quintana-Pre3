@@ -1,10 +1,12 @@
 //Prod destacados
 .menu {
   padding-top: 180px;
+
   .categories {
     display: flex;
     justify-content: center;
     margin-right: 2rem;
+
     .category {
       cursor: pointer;
       height: 12rem;
@@ -30,6 +32,138 @@
         background-color: $Main-claro;
         color: $Blanco;
         border-radius: 10px;
+      }
+
+      &.active {
+        background-color: $Acento;
+        border-radius: 10px;
+        color: $Blanco;
+
+        svg {
+          stroke: $Blanco;
+        }
+      }
+    }
+  }
+}
+
+/* Estilos de la card */
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 2rem;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+
+  .card {
+    border: 2px solid $Secundario;
+    border-radius: 4px;
+    padding: 16px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    img {
+      border-radius: 4px;
+      width: 100%;
+      height: 60%;
+      object-fit: cover;
+    }
+
+    &.fade-in {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &.fade-out {
+    opacity: 0;
+  }
+
+  .quantity-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+
+    .quantity-btn {
+      background-color: $Secundario;
+      color: $Blanco;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      height: 1.5rem;
+      width: 1.5rem;
+
+      &:disabled {
+        background-color: $Main-oscuro;
+        cursor: not-allowed;
+      }
+
+      &:hover {
+        background-color: $Acento;
+      }
+    }
+
+    .quantity-input {
+      width: 1.8rem;
+      height: 1.5rem;
+      text-align: center;
+      font-size: 16px;
+      margin: 0 4px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+  }
+
+  .button-container {
+    margin-top: 16px;
+    display: flex;
+
+    .card-button {
+      display: flex;
+      justify-content: center;
+      background-color: $Main-claro;
+      color: $Blanco;
+      border: none;
+      padding: 10px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin: 4px;
+      width: 100%;
+      flex: 1;
+      @include hover-transition(background-color, 0.3s, ease-in-out);
+    }
+
+    .cart-add {
+      &:hover {
+        background-color: $Secundario;
+      }
+    }
+
+    .buy-now {
+      background-color: $Secundario;
+      flex: 5;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+      width: auto;
+      border: 2px solid $Secundario;
+      font-size: 1rem;
+      font-weight: bold;
+      @include hover-transition(background-color, 0.3s, ease-in-out);
+
+      &:hover {
+        background-color: $Blanco;
+        color: $Secundario;
       }
     }
   }

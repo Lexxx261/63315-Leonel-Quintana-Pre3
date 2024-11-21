@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Productos</title>
+
+<!-- HTML -->
+<section class="menu" id="menu">
+    <h2 class="menu-txt">PRODUCTOS</h2>
+    <div class="categories">
+        <div class="category" data-category="1">Box's</div>
+        <div class="category" data-category="2">Tortas</div>
+        <div class="category" data-category="3">Desayunos</div>
+        <div class="category" data-category="4">Eventos</div>
+    </div>
+</section>
+<div class="products" id="productos-container"></div>
+
+<!-- Include the JavaScript -->
+
+
+<!-- Include the JavaScript -->
+ <script type="module">
+// script.js
+import { productos } from './scripts/productos.js';
+
+// Obtener referencias a los elementos
+const categoryButtons = document.querySelectorAll('.category');
+const productosContainer = document.getElementById('productos-container');
+
+// Función para mostrar los productos filtrados
+function mostrarProductosFiltrados(categoryId) {
+    productosContainer.innerHTML = ''; // Limpiar el contenedor
+    const productosFiltrados = productos.filter(producto => producto.category === categoryId);
+
+    productosFiltrados.forEach(producto => {
+        const productoDiv = document.createElement('div');
+        productoDiv.className = 'producto';
+        productoDiv.innerHTML = `
+            <h3>${producto.name}</h3>
+            <p>${producto.description}</p>
+            <p>Precio: $${producto.price}</p>
+        `;
+        productosContainer.appendChild(productoDiv);
+    });
+}
+
+// Agregar eventos de clic a cada categoría
+categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const categoryId = parseInt(button.getAttribute('data-category'), 10);
+        mostrarProductosFiltrados(categoryId);
+    });
+});
+</script>
+
+</body>
+</html>

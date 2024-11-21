@@ -21,3 +21,6 @@
 @mixin hover-transition($property: background-color, $duration: 0.3s, $timing: ease) {
     transition: #{$property} #{$duration} #{$timing};
 }
+@mixin border ($property){
+    border-radius: 4px;
+}

@@ -1,15 +1,36 @@
+header{
+  button{
+    display: flex;
+    background-color: $Main-claro;
+    color: $Blanco;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    margin-right: 2rem;
+    @include border(4px);
+    @include hover-transition(background-color, 0.3s, ease-in-out);
+    &:hover {
+      background-color: $Secundario;
+    }
+  }
+}
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $Blanco;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(2px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: fixed;
   width: 100%;
   transition: top 0.3s ease-in-out;
   z-index: 1000;
+  transition: transform 0.3s ease-in-out;
 }
-
+.nav-hidden {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
 .nav-links {
   display: flex;
   list-style-type: none;
@@ -48,20 +69,6 @@
   width: 10rem;
 }
 
-.cart {
-  color: $Main-claro;
-  border-radius: 15px;
-  border: 3px solid $Main-claro;
-  cursor: pointer;
-  font-weight: 500;
-  @include hover-transition(background-color, 0.3s, ease-in-out);
-  @include spacing(margin-right, 2rem);
-  @include spacing(padding, 5px);
-  &:hover {
-    background-color: $Main-claro;
-    color: $Blanco;
-  }
-}
 // texto para mostrar el mobile
 .Unat {
   display: none;
