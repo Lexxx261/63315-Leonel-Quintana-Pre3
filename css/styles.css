@@ -74,7 +74,12 @@ header button:hover {
 }
 
 .Unat {
-  display: none;
+  line-height: 1;
+}
+.Unat p {
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  color: #6d6977;
 }
 
 .titulo {
@@ -130,11 +135,6 @@ header button:hover {
   background: #e5999c;
   border-radius: 10px;
   transition: width 0.3s ease; /* Suavizado al hacer hover */
-}
-
-/* Agrandar la manija al pasar el mouse */
-::-webkit-scrollbar:hover {
-  width: 12px; /* Aumenta el ancho al hacer hover */
 }
 
 /* Agrandar el thumb al hacer hover en la barra */

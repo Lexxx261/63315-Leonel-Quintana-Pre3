@@ -15,15 +15,11 @@
   transition: width 0.3s ease; /* Suavizado al hacer hover */
 }
 
-/* Agrandar la manija al pasar el mouse */
-::-webkit-scrollbar:hover {
-  width: 12px; /* Aumenta el ancho al hacer hover */
-}
-
 /* Agrandar el thumb al hacer hover en la barra */
 ::-webkit-scrollbar-thumb:hover {
   background: $Acento; /* Cambio de color para mayor visibilidad */
 }
+
 html{
   scroll-behavior: smooth;
 }

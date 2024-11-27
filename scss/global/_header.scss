@@ -68,10 +68,13 @@ header{
 .logo-img {
   width: 10rem;
 }
-
-// texto para mostrar el mobile
-.Unat {
-  display: none;
+.Unat{
+  line-height: 1;
+  p{
+    font-size: 1.5rem;
+    font-family: $fuente-principal;
+    color: $Main-oscuro;
+  }
 }
 .titulo{
   color: $Main-claro;
