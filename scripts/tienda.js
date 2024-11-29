@@ -148,17 +148,16 @@ function buyNow(producto, quantityInput) {
     window.location.href = 'carrito.html';
 }
 
-// Función Añadir al Carrito
 function addToCart(producto, quantityInput) {
     const cantidad = parseInt(quantityInput.value, 10);
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
 
     if (!cart[producto.id]) {
         cart[producto.id] = { ...producto, cantidad: 0 };
     }
     cart[producto.id].cantidad += cantidad;
 
-    // Guarda el carrito en localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
-
+    updateCartCount(); // Actualiza el contador del carrito
     alert(`${producto.nombre} añadido al carrito.`);
 }

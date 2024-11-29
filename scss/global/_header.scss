@@ -26,6 +26,7 @@ header{
   transition: top 0.3s ease-in-out;
   z-index: 1000;
   transition: transform 0.3s ease-in-out;
+  top: 0;
 }
 .nav-hidden {
   transform: translateY(-100%);

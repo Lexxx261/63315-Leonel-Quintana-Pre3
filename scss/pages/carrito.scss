@@ -1,0 +1,114 @@
+.cart-content {
+    margin-top: 160px;
+    padding-left: 15%;
+    padding-right: 15%;
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    #cart-container {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 2px solid #e5999c;
+        align-items: center;
+        padding: 2rem;
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 800px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+            font-size: 1.2rem;
+            h3 {
+                padding-left: 1.5rem;
+                flex: 2;            
+            }
+            p {
+                font-weight: bold;
+                flex: 1;
+                text-align: center; 
+            }
+            .cart-item-img{
+                width: 20%;
+                border-radius: 4px;
+            }
+        }
+        .cart-item 
+        .quantity-input {
+            width: 2rem;
+            text-align: center;
+            margin: 0 10px;
+        }
+        .cart-item 
+        .remove-button {
+            background-color: #e74c3c;
+            color: $Blanco;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            flex: 0.5;
+            text-align: center;
+        }
+        .remove-button:hover {
+            background-color: #c0392b; /* Efecto hover más oscuro */
+        }
+        .cart-none{
+            font-size: 3rem;
+            font-style: italic;
+        }
+    }
+
+    .cart-resume {
+        button {
+            background-color: $Main-claro;
+            color: $Blanco;
+            border: 2px solid $Main-claro;
+            padding: 10px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 4px;
+            font-weight: bold;
+            @include hover-transition(background-color, 0.3s, ease-in-out);
+
+            &:hover {
+                background-color: $Blanco;
+                color: $Main-claro;
+            }
+        }
+
+        .cart-clear {
+            text-align: end;
+        }
+
+        .carrit-end {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            #total-price {
+                padding: 1rem;
+                font-size: 2rem;
+            }
+        }
+
+        .cart-cupon {
+            display: flex;
+
+            #coupon-code {
+                padding: 10px 16px;
+                margin: 4px;
+                border: 1px solid gray;
+                border-radius: 4px;
+            }
+        }
+    }
+}

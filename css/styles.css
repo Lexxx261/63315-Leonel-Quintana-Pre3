@@ -32,6 +32,7 @@ header button:hover {
   transition: top 0.3s ease-in-out;
   z-index: 1000;
   transition: transform 0.3s ease-in-out;
+  top: 0;
 }
 
 .nav-hidden {
@@ -584,6 +585,107 @@ h2 {
 .products .button-container .buy-now:hover {
   background-color: #ffffff;
   color: #b6848f;
+}
+
+.cart-content {
+  margin-top: 160px;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+.cart-content h1 {
+  font-size: 4rem;
+}
+.cart-content #cart-container {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid #e5999c;
+  align-items: center;
+  padding: 2rem;
+}
+.cart-content #cart-container .cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 800px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+.cart-content #cart-container .cart-item h3 {
+  padding-left: 1.5rem;
+  flex: 2;
+}
+.cart-content #cart-container .cart-item p {
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+}
+.cart-content #cart-container .cart-item .cart-item-img {
+  width: 20%;
+  border-radius: 4px;
+}
+.cart-content #cart-container .cart-item .quantity-input {
+  width: 2rem;
+  text-align: center;
+  margin: 0 10px;
+}
+.cart-content #cart-container .cart-item .remove-button {
+  background-color: #e74c3c;
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  flex: 0.5;
+  text-align: center;
+}
+.cart-content #cart-container .remove-button:hover {
+  background-color: #c0392b; /* Efecto hover más oscuro */
+}
+.cart-content #cart-container .cart-none {
+  font-size: 3rem;
+  font-style: italic;
+}
+.cart-content .cart-resume button {
+  background-color: #e5999c;
+  color: #ffffff;
+  border: 2px solid #e5999c;
+  padding: 10px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+}
+.cart-content .cart-resume button:hover {
+  background-color: #ffffff;
+  color: #e5999c;
+}
+.cart-content .cart-resume .cart-clear {
+  text-align: end;
+}
+.cart-content .cart-resume .carrit-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cart-content .cart-resume .carrit-end #total-price {
+  padding: 1rem;
+  font-size: 2rem;
+}
+.cart-content .cart-resume .cart-cupon {
+  display: flex;
+}
+.cart-content .cart-resume .cart-cupon #coupon-code {
+  padding: 10px 16px;
+  margin: 4px;
+  border: 1px solid gray;
+  border-radius: 4px;
 }
 
 /*# sourceMappingURL=styles.css.map */
