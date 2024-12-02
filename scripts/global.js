@@ -1,3 +1,5 @@
+import { updateCartCount } from './utilidades.js';
+
 document.addEventListener('DOMContentLoaded', () => {
 
     let lastScrollTop = 0;
@@ -31,13 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Asignar evento de clic para redirigir a carrito.html
     cartButton.addEventListener('click', () => {
         window.location.href = '../pages/carrito.html'; // Redirige a la página del carrito
-    });
-
-    function updateCartCount() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || {}; // Leer el carrito desde localStorage
-        const itemCount = Object.keys(cart).length; // Contar productos únicos
-        document.getElementById('cart-count').textContent = itemCount; // Actualizar el contador en la vista
-    }    
+    }); 
 
     // Llama a `updateCartCount` al cargar la página
     document.addEventListener('DOMContentLoaded', () => {

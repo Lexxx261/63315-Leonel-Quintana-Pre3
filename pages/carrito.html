@@ -65,6 +65,30 @@
                 <p id="total-price">Importe Total: $0</p>
                 <button id="checkout-button">Finalizar Compra</button>
             </div>
+            <!-- Mensaje eliminar producto -->
+            <div id="remove-product-modal" class="modal">
+                <div class="modal-content">
+                    <p id="remove-modal-text">¿Seguro que deseas eliminar este producto del carrito?</p>
+                    <button id="confirm-remove-button">Eliminar</button>
+                    <button id="cancel-remove-button">Cancelar</button>
+                </div>
+            </div>
+
+            <!-- mensaje finalizar compra -->
+            <div id="purchase-modal" class="modal">
+                <div class="modal-content">
+                    <p>¡Gracias por tu compra!</p>
+                    <button id="close-modal-button">Aceptar</button>
+                </div>
+            </div>
+            <!-- Mensaje vaciar carrito -->
+            <div id="clear-cart-modal" class="modal">
+                <div class="modal-content">
+                    <p>¿Seguro que deseas vaciar el carrito?</p>
+                    <button id="confirm-clear-button">Confirmar</button>
+                    <button id="cancel-clear-button">Cancelar</button>
+                </div>
+            </div>
 
         </div>
     </main>
@@ -99,7 +123,7 @@
     </a>
 
     <script type="module" src="../scripts/tienda.js"></script>
-    <script src="../scripts/carrito.js"></script>
+    <script type="module" src="../scripts/carrito.js"></script>
     <script type="module" src="../scripts/global.js"></script>
 
 </body>

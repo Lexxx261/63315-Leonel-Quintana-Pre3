@@ -1,4 +1,5 @@
 import { productos } from './productos.js';
+import { updateCartCount } from './utilidades.js';
 
 const container = document.getElementById('productos-container');
 const categoryElements = document.querySelectorAll('.category');
@@ -158,6 +159,23 @@ function addToCart(producto, quantityInput) {
     cart[producto.id].cantidad += cantidad;
 
     localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount(); // Actualiza el contador del carrito
-    alert(`${producto.nombre} añadido al carrito.`);
+    updateCartCount();
+
+    // Mostrar notificación
+    showNotification(`${producto.nombre} (x${cantidad}) añadido al carrito.`);
+}
+
+// Función para mostrar notificación
+function showNotification(message) {
+    const container = document.getElementById('notification-container');
+    const notification = document.createElement('div');
+    notification.classList.add('notification');
+    notification.textContent = message;
+
+    container.appendChild(notification);
+
+    // Eliminar notificación después de 3 segundos
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
 }
