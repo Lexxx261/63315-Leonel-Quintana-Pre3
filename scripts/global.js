@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Asignar evento de clic para redirigir a carrito.html
     cartButton.addEventListener('click', () => {
-        window.location.href = './pages/carrito.html'; // Redirige a la página del carrito
+        window.location.href = '/pages/carrito.html'; // Redirige a la página del carrito
     }); 
 
     // Llama a `updateCartCount` al cargar la página
