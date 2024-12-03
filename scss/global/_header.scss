@@ -105,10 +105,14 @@ header {
   }
 
   /* Animación del contador */
+  .home-page {
+    display: none !important;
+  }
+
   .cart-all {
     position: relative;
     display: inline-block;
-
+    
     #cart-count {
       position: absolute;
       top: -5px;
