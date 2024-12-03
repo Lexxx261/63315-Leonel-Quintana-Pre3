@@ -2,13 +2,6 @@ import { updateCartCount } from './utilidades.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
-    //     const cartButton = document.getElementById('cartButton');
-    //     if (cartButton) {
-    //         cartButton.style.display = 'none';
-    //     }
-    // }
-
     let lastScrollTop = 0;
     const navbar = document.querySelector('.navbar');
 
@@ -36,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Asignar evento de clic para redirigir a carrito
     cartButton.addEventListener('click', () => {
-        window.location.href = './pages/carrito.html';
+        window.location.href = '/pages/carrito.html';
     }); 
 
     document.addEventListener('DOMContentLoaded', () => {
