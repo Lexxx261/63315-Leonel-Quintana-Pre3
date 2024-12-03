@@ -129,25 +129,22 @@ function updateQuantity(change, inputElement) {
     inputElement.value = currentQuantity;
 }
 
-// Objeto para almacenar los productos en el carrito
-const cart = JSON.parse(localStorage.getItem('cart')) || {};  // Recuperar carrito si existe
-
 // Función Comprar Ahora
 function buyNow(producto, quantityInput) {
     const cantidad = parseInt(quantityInput.value, 10);
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
 
-    // Verifica si el producto ya está en el carrito
     if (!cart[producto.id]) {
         cart[producto.id] = { ...producto, cantidad: 0 };
     }
-    cart[producto.id].cantidad += cantidad;  // Suma la cantidad seleccionada
+    
+    cart[producto.id].cantidad += cantidad;
 
-    // Guarda el carrito en localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
 
-    // Redirige a la página del carrito
     window.location.href = 'carrito.html';
 }
+
 
 function addToCart(producto, quantityInput) {
     const cantidad = parseInt(quantityInput.value, 10);
@@ -161,7 +158,6 @@ function addToCart(producto, quantityInput) {
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
 
-    // Mostrar notificación
     showNotification(`${producto.nombre} (x${cantidad}) añadido al carrito.`);
 }
 
@@ -174,7 +170,6 @@ function showNotification(message) {
 
     container.appendChild(notification);
 
-    // Eliminar notificación después de 3 segundos
     setTimeout(() => {
         notification.remove();
     }, 3000);
