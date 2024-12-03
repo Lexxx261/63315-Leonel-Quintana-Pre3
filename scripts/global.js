@@ -28,15 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Asignar evento de clic para redirigir a carrito
-    // cartButton.addEventListener('click', () => {
-    //     window.location.href = '../pages/carrito.html';
-    // }); 
-
     cartButton.addEventListener('click', () => {
-        // Redirecciona siempre a carrito.html en la carpeta pages
-        const baseUrl = window.location.origin; 
-        window.location.href = `${baseUrl}/63315-Leonel-Quintana-Pre3/pages/carrito.html`;
+        window.location.href = '../pages/carrito.html';
     });
+
+    // codigo carrito.html para que funcione desde gitbuh pages.
+    // cartButton.addEventListener('click', () => {
+    //     const baseUrl = window.location.origin; 
+    //     window.location.href = `${baseUrl}/63315-Leonel-Quintana-Pre3/pages/carrito.html`;
+    // });
 
     document.addEventListener('DOMContentLoaded', () => {
         updateCartCount();
