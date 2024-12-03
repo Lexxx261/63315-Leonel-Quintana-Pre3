@@ -29,8 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Asignar evento de clic para redirigir a carrito
     cartButton.addEventListener('click', () => {
-        window.location.href = '../pages/carrito.html';
-    }); 
+        const baseUrl = window.location.origin;
+        window.location.href = `${baseUrl}/pages/carrito.html`;
+    });
 
     document.addEventListener('DOMContentLoaded', () => {
         updateCartCount();
