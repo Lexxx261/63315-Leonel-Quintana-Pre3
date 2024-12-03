@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cartButton.addEventListener('click', () => {
         // Redirecciona siempre a carrito.html en la carpeta pages
         const baseUrl = window.location.origin; 
-        window.location.href = `${baseUrl}63315-Leonel-Quintana-Pre3/pages/carrito.html`;
+        window.location.href = `${baseUrl}/63315-Leonel-Quintana-Pre3/pages/carrito.html`;
     });
 
     document.addEventListener('DOMContentLoaded', () => {
