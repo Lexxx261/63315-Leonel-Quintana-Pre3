@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="prod-content">
                     <div class="prod-overlay">
                         <h3 class="prod-name">${producto.nombre}</h3>
-                        <img src="../img/productos/${producto.imagen}" alt="${producto.nombre}">
+                        <img src="./img/productos/${producto.imagen}" alt="${producto.nombre}">
                         <div class="prod-hover">
                             <p class="prod-description">${producto.descripcionCorta}</p>
                             <div class="control">
