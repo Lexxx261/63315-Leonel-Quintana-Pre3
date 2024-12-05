@@ -175,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cart = {};
         localStorage.removeItem('cart');
         renderCart();
+        updateCartCount();
         clearCartModal.style.display = 'none';
     });
 
