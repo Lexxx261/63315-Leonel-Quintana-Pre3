@@ -1,0 +1,128 @@
+[
+    {
+        "id": 1,
+        "nombre": "Combo Frio",
+        "precio": 500,
+        "imagen": ["Desayuno.jpg", "Rogel.png"],
+        "category": 1,
+        "destacado": false,
+        "descripcionCorta": "Coso"
+    },
+    {
+        "id": 2,
+        "nombre": "Combo Caliente",
+        "precio": 600,
+        "category": 1,
+        "imagen": ["Desayuno.jpg"],
+        "destacado": false,
+        "descripcionCorta": "Coso"
+    },
+    {
+        "id": 3,
+        "nombre": "Combo Premium",
+        "precio": 1000,
+        "category": 1,
+        "imagen": ["Desayuno.jpg"],
+        "destacado": false,
+        "descripcionCorta": "Coso"
+    },
+    {
+        "id": 4,
+        "nombre": "Rogel",
+        "precio": 1100,
+        "category": 2,
+        "imagen": ["Rogel.png"],
+        "destacado": true,
+        "descripcionCorta": "Capas de masa crocante, dulce de leche y cobertura de merengue italiano."
+    },
+    {
+        "id": 5,
+        "nombre": "Chessscake Frutos Rojos",
+        "precio": 850,
+        "category": 2,
+        "imagen": ["Cheesecake.png"],
+        "destacado": false,
+        "descripcionCorta": "Cremoso con base de galleta, relleno de queso y una cobertura de frutos rojos frescos o en salsa."
+    },
+    {
+        "id": 6,
+        "nombre": "Chajá",
+        "precio": 1100,
+        "category": 2,
+        "imagen": ["Chaja.png"],
+        "destacado": false,
+        "descripcionCorta": "Combinación de bizcochuelo, merengue, crema chantilly y duraznos en almíbar."
+    },
+    {
+        "id": 7,
+        "nombre": "Mini Cake con Diseño",
+        "precio": 400,
+        "category": 2,
+        "imagen": ["Mini_cake.png"],
+        "destacado": true,
+        "descripcionCorta": "Un mini cake decorado, es una pequeña torta individual con detalles artísticos personalizados, ideal para ocasiones especiales."
+    },
+    {
+        "id": 8,
+        "nombre": "Torta 3kg con Diseño",
+        "precio": 20,
+        "category": 2,
+        "imagen": ["Torta_cumple.png"],
+        "destacado": false,
+        "descripcionCorta": "Personalizada, ideal para celebraciones, decorada según la temática elegida con detalles en crema, fondant o toppers."
+    },
+    {
+        "id": 9,
+        "nombre": "Combo 1",
+        "precio": 390,
+        "category": 3,
+        "imagen": ["Box1.jpg"],
+        "destacado": false,
+        "descripcionCorta": "Coso"
+    },
+    {
+        "id": 10,
+        "nombre": "Combo 2",
+        "precio": 900,
+        "category": 3,
+        "imagen": ["Box1.jpg"],
+        "destacado": false,
+        "descripcionCorta": "Coso"
+    },
+    {
+        "id": 11,
+        "nombre": "Combo 3",
+        "precio": 1300,
+        "category": 3,
+        "imagen": ["Box1.jpg"],
+        "destacado": false,
+        "descripcionCorta": "Coso"
+    },
+    {
+        "id": 12,
+        "nombre": "Mix Shots (12un.)",
+        "precio": 600,
+        "category": 4,
+        "imagen": ["Mix_shots.png"],
+        "destacado": false,
+        "descripcionCorta": "Postres en formato individual, como cheesecake, brownie, Oreo, mango y chocotorta, perfectos para disfrutar distintas delicias en pequeñas porciones."
+    },
+    {
+        "id": 13,
+        "nombre": "Corazones Rellenos (6un.)",
+        "precio": 390,
+        "category": 4,
+        "imagen": ["Corazones.png"],
+        "destacado": true,
+        "descripcionCorta": "Rellenos con forma de corazón, hechos de chocolate y rellenos con opciones como dulce de leche, crema de avellanas o frutos secos."
+    },
+    {
+        "id": 14,
+        "nombre": "Mini Donas (12un.)",
+        "precio": 230,
+        "category": 4,
+        "imagen": ["Mini_donas.png"],
+        "destacado": true,
+        "descripcionCorta": "Pequeñas donas esponjosas, fritas u horneadas, decoradas con glaseados, azúcar o toppings variados."
+    }
+]

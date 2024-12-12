@@ -1,11 +1,20 @@
-import { productos } from './productos.js';
 import { updateCartCount } from './utilidades.js';
 
 const container = document.getElementById('productos-container');
 const categoryElements = document.querySelectorAll('.category');
 let activeCategory = null;
+let productos = [];
 
-// Formato del card y ver prod
+// Cargar productos desde el archivo JSON
+fetch('../data/products.json')
+    .then(response => response.json())
+    .then(data => {
+        productos = data;
+        showProducts();
+    })
+    .catch(error => console.error('Error al cargar productos:', error));
+
+// Mostrar productos (función existente)
 function showProducts(categoryId = null) {
     container.classList.add('fade-out');
 
@@ -19,11 +28,55 @@ function showProducts(categoryId = null) {
             const productDiv = document.createElement('div');
             productDiv.classList.add('card');
 
-            // Imagen del producto
-            const img = document.createElement('img');
-            img.src = `../img/productos/${producto.imagen}`;
-            img.alt = `${producto.nombre}`;
-            productDiv.appendChild(img);
+            // Crear un slider de imágenes para cada producto
+            const sliderGallery = document.createElement('div');
+            sliderGallery.classList.add('slider-gallery-content');
+
+            // Crear botones de navegación (flechas)
+            const prevButton = document.createElement('button');
+            prevButton.classList.add('slider-button', 'slider-button-prev');
+            prevButton.textContent = '❮';
+
+            const nextButton = document.createElement('button');
+            nextButton.classList.add('slider-button', 'slider-button-next');
+            nextButton.textContent = '❯';
+
+            if (producto.imagen && Array.isArray(producto.imagen) && producto.imagen.length > 0) {
+                producto.imagen.forEach((imagen, index) => {
+                    const img = document.createElement('img');
+                    img.src = `../img/productos/${imagen}`;
+                    img.alt = `${producto.nombre} - ${index + 1}`;
+                    img.classList.add('slider-img-gallery');
+                    if (index === 0) img.classList.add('active');
+                    sliderGallery.appendChild(img);
+                });
+
+                // Agregar botones de navegación al slider
+                sliderGallery.appendChild(prevButton);
+                sliderGallery.appendChild(nextButton);
+
+                productDiv.appendChild(sliderGallery);
+
+                // Funcionalidad para cambiar imágenes con las flechas
+                let currentIndex = 0;
+                const images = sliderGallery.querySelectorAll('.slider-img-gallery');
+
+                function showImage(index) {
+                    images[currentIndex].classList.remove('active');
+                    currentIndex = (index + images.length) % images.length; // Asegura que el índice sea circular
+                    images[currentIndex].classList.add('active');
+                }
+
+                prevButton.addEventListener('click', () => showImage(currentIndex - 1));
+                nextButton.addEventListener('click', () => showImage(currentIndex + 1));
+            } else {
+                // Si no hay múltiples imágenes, mostrar una imagen por defecto
+                const img = document.createElement('img');
+                img.src = `../img/productos/${producto.imagen}`;
+                img.alt = `${producto.nombre}`;
+                productDiv.appendChild(img);
+            }
+
 
             // Nombre del producto
             const name = document.createElement('h3');
@@ -42,6 +95,7 @@ function showProducts(categoryId = null) {
             const minusButton = document.createElement('button');
             minusButton.classList.add('quantity-btn');
             minusButton.textContent = '-';
+
             const quantityInput = document.createElement('input');
             quantityInput.type = 'text';
             quantityInput.classList.add('quantity-input');
@@ -84,7 +138,10 @@ function showProducts(categoryId = null) {
             cartIcon.appendChild(path);
             addToCartButton.appendChild(cartIcon);
 
-            addToCartButton.onclick = () => addToCart(producto, quantityInput); //esto
+            addToCartButton.onclick = () => addToCart(producto, quantityInput);
+
+            addToCartButton.addEventListener('mouseenter', () => showTooltip(addToCartButton, 'Agregar al carrito'));
+            addToCartButton.addEventListener('mouseleave', () => hideTooltip(addToCartButton));
 
             buttonContainer.appendChild(buyNowButton);
             buttonContainer.appendChild(addToCartButton);
@@ -94,7 +151,6 @@ function showProducts(categoryId = null) {
 
             // animacion en el dom
             setTimeout(() => productDiv.classList.add('fade-in'), 100);
-
         });
 
         container.classList.remove('fade-out');
@@ -103,7 +159,7 @@ function showProducts(categoryId = null) {
 
 showProducts();
 
-// Seleccionar categoria
+// Función para manejar la selección de categorías
 function handleCategoryClick(category) {
     const categoryId = parseInt(category.getAttribute('data-category'), 10);
     if (activeCategory === categoryId) {
@@ -118,6 +174,7 @@ function handleCategoryClick(category) {
     }
 }
 
+// Manejar clic en categorías
 categoryElements.forEach(category => {
     category.addEventListener('click', () => handleCategoryClick(category));
 });
@@ -137,7 +194,7 @@ function buyNow(producto, quantityInput) {
     if (!cart[producto.id]) {
         cart[producto.id] = { ...producto, cantidad: 0 };
     }
-    
+
     cart[producto.id].cantidad += cantidad;
 
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -145,7 +202,23 @@ function buyNow(producto, quantityInput) {
     window.location.href = 'carrito.html';
 }
 
+function showNotification(producto, cantidad) {
+    const notification = document.createElement('div');
+    notification.classList.add('floating-notification');
 
+    const texto = document.createElement('span');
+    texto.innerHTML = `Se agregó <strong>${cantidad}</strong> de <strong>${producto.nombre}</strong> al carrito`;
+
+    notification.appendChild(texto);
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.remove();
+    }, 2000);
+}
+
+// Modificar la función addToCart para incluir la notificación
 function addToCart(producto, quantityInput) {
     const cantidad = parseInt(quantityInput.value, 10);
     let cart = JSON.parse(localStorage.getItem('cart')) || {};
@@ -153,24 +226,38 @@ function addToCart(producto, quantityInput) {
     if (!cart[producto.id]) {
         cart[producto.id] = { ...producto, cantidad: 0 };
     }
+
     cart[producto.id].cantidad += cantidad;
 
     localStorage.setItem('cart', JSON.stringify(cart));
+
     updateCartCount();
 
-    showNotification(`${producto.nombre} (x${cantidad}) añadido al carrito.`);
+    // Mostrar notificación flotante
+    showNotification(producto, cantidad);
 }
 
-// Función para mostrar notificación
-function showNotification(message) {
-    const container = document.getElementById('notification-container');
-    const notification = document.createElement('div');
-    notification.classList.add('notification');
-    notification.textContent = message;
+function showTooltip(button, message) {
+    if (!button.querySelector('.tooltip')) {
+        const tooltip = document.createElement('div');
+        tooltip.classList.add('tooltip');
+        tooltip.textContent = message;
+        button.style.position = 'relative';
+        button.appendChild(tooltip);
 
-    container.appendChild(notification);
+        // Forzar el reflow para que la animación funcione
+        requestAnimationFrame(() => {
+            tooltip.classList.add('show');
+        });
+    }
+}
 
-    setTimeout(() => {
-        notification.remove();
-    }, 3000);
+function hideTooltip(button) {
+    const tooltip = button.querySelector('.tooltip');
+    if (tooltip) {
+        tooltip.classList.remove('show');
+        setTimeout(() => {
+            tooltip.remove();
+        }, 300);
+    }
 }

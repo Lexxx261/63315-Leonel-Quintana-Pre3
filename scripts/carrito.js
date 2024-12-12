@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'DESC10': 10,   // 10% de descuento
         'DESC20': 20,   // 20% de descuento
     };
-
+   
     // Función para renderizar el carrito
     function renderCart() {
         cartContainer.innerHTML = '';
@@ -37,9 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const productDiv = document.createElement('div');
             productDiv.classList.add('cart-item');
 
-            // Crear imagen del producto
+            // Crear imagen del producto para el carrito
             const img = document.createElement('img');
-            img.src = `../img/productos/${producto.imagen}`;
+
+            // Verificar si 'producto.imagenes' es un array válido y tiene al menos una imagen
+            if (producto.imagen && Array.isArray(producto.imagen) && producto.imagen.length > 0) {
+                img.src = `../img/productos/${producto.imagen[0]}`; // Toma solo la primera imagen
+            } else {
+                img.src = '../img/productos/logo-round.png'; // Imagen por defecto si no hay imágenes
+            }
+
             img.alt = producto.nombre;
             img.classList.add('cart-item-img');
 
@@ -49,12 +56,29 @@ document.addEventListener('DOMContentLoaded', () => {
             name.classList.add('cart-item-name');
 
             // Controles de cantidad
+            const quantityContainer = document.createElement('div');
+            quantityContainer.classList.add('quantity-container');
+
+            const decreaseButton = document.createElement('button');
+            decreaseButton.textContent = '-';
+            decreaseButton.classList.add('quantity-button');
+            decreaseButton.dataset.id = producto.id;
+
             const quantityInput = document.createElement('input');
-            quantityInput.type = 'number';
+            quantityInput.type = 'text';
             quantityInput.min = 1;
             quantityInput.value = producto.cantidad;
             quantityInput.classList.add('quantity-input');
             quantityInput.dataset.id = producto.id;
+
+            const increaseButton = document.createElement('button');
+            increaseButton.textContent = '+';
+            increaseButton.classList.add('quantity-button');
+            increaseButton.dataset.id = producto.id;
+
+            quantityContainer.appendChild(decreaseButton);
+            quantityContainer.appendChild(quantityInput);
+            quantityContainer.appendChild(increaseButton);
 
             // Precio
             const price = document.createElement('p');
@@ -69,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             productDiv.appendChild(img);
             productDiv.appendChild(name);
-            productDiv.appendChild(quantityInput);
+            productDiv.appendChild(quantityContainer);
             productDiv.appendChild(price);
             productDiv.appendChild(removeButton);
 
@@ -89,7 +113,26 @@ document.addEventListener('DOMContentLoaded', () => {
         totalPriceElement.textContent = `Importe Total: $${total.toFixed(0)}`;
     }
 
-    // APLICAR CUPON
+    // Event listeners para botones de cantidad
+    cartContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('quantity-button')) {
+            const productId = e.target.dataset.id;
+            const quantityInput = e.target.parentNode.querySelector('.quantity-input');
+
+            if (e.target.textContent === '+') {
+                cart[productId].cantidad++;
+            } else if (e.target.textContent === '-' && cart[productId].cantidad > 1) {
+                cart[productId].cantidad--;
+            }
+
+            quantityInput.value = cart[productId].cantidad;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            updateCartCount();
+        }
+    });
+
+    // APLICAR CUPÓN
     applyCouponButton.addEventListener('click', () => {
         const couponCode = couponInput.value.trim().toUpperCase();
         if (validCoupons[couponCode] !== undefined) {
@@ -143,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
             productIdToRemove = null;
         }
     });
+
     //-------------------------------------------------------------------//
 
     cartContainer.addEventListener('input', (e) => {
@@ -199,10 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('El carrito está vacío. Agrega productos antes de finalizar la compra.');
             return;
         }
-
-
         purchaseModal.style.display = 'flex';
-
 
         localStorage.removeItem('cart');
         cart = {};

@@ -1,178 +1,212 @@
 .cart-content {
-    margin-top: 160px;
-    padding-left: 15%;
-    padding-right: 15%;
+  margin-top: 160px;
+  padding-left: 15%;
+  padding-right: 15%;
 
-    h1 {
-        font-size: 4rem;
+  h1 {
+    font-size: 4rem;
+  }
+
+  #cart-container {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid #e5999c;
+    align-items: center;
+    padding: 2rem;
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 800px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 10px 0;
+      font-size: 1.2rem;
+
+      h3 {
+        padding-left: 1.5rem;
+        flex: 2;
+      }
+
+      p {
+        font-weight: bold;
+        flex: 1;
+        text-align: center;
+      }
+
+      .cart-item-img {
+        width: 20%;
+        border-radius: 4px;
+      }
     }
 
-    #cart-container {
-        display: flex;
-        flex-direction: column;
-        border-bottom: 2px solid #e5999c;
-        align-items: center;
-        padding: 2rem;
+    .cart-item .quantity-input {
+      width: 2rem;
+      text-align: center;
+    }
 
-        .cart-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 800px;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 10px 0;
-            font-size: 1.2rem;
+    .cart-item .remove-button {
+      background-color: $Acento;
+      color: $Blanco;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      flex: 0.5;
+      text-align: center;
+    }
 
-            h3 {
-                padding-left: 1.5rem;
-                flex: 2;
-            }
+    .remove-button:hover {
+      background-color: $Acentodark;
+    }
 
-            p {
-                font-weight: bold;
-                flex: 1;
-                text-align: center;
-            }
+    .cart-none {
+      font-size: 3rem;
+      font-style: italic;
+    }
+  }
 
-            .cart-item-img {
-                width: 20%;
-                border-radius: 4px;
-            }
-        }
+  .cart-resume {
+    button {
+      background-color: $Main-claro;
+      color: $Blanco;
+      border: 2px solid $Main-claro;
+      padding: 10px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin: 4px;
+      font-weight: bold;
+      @include hover-transition(background-color, 0.3s, ease-in-out);
 
-        .cart-item .quantity-input {
-            width: 2rem;
-            text-align: center;
-            margin: 0 10px;
-        }
+      &:hover {
+        background-color: $Blanco;
+        color: $Main-claro;
+      }
+    }
 
-        .cart-item .remove-button {
-            background-color: $Acento;
-            color: $Blanco;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            flex: 0.5;
-            text-align: center;
-        }
+    .cart-clear {
+      text-align: end;
+    }
 
-        .remove-button:hover {
+    .carrit-end {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      #total-price {
+        padding: 1rem;
+        font-size: 2rem;
+      }
+    }
+
+    .cart-cupon {
+      display: flex;
+
+      #coupon-code {
+        padding: 10px 16px;
+        margin: 4px;
+        border: 1px solid gray;
+        border-radius: 4px;
+      }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+
+      .modal-content {
+        background-color: $Blanco;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.3s ease;
+
+        #confirm-remove-button {
+          background-color: $Acento;
+          &:hover {
             background-color: $Acentodark;
+          }
+        }
+        #confirm-clear-button {
+          background-color: $Acento;
+          &:hover {
+            background-color: $Acentodark;
+          }
         }
 
-        .cart-none {
-            font-size: 3rem;
-            font-style: italic;
-        }
-    }
-
-    .cart-resume {
         button {
-            background-color: $Main-claro;
-            color: $Blanco;
-            border: 2px solid $Main-claro;
-            padding: 10px 16px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 4px;
-            margin: 4px;
-            font-weight: bold;
-            @include hover-transition(background-color, 0.3s, ease-in-out);
+          margin-top: 10px;
+          padding: 8px 16px;
+          background-color: $Main-claro;
+          color: $Blanco;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
 
-            &:hover {
-                background-color: $Blanco;
-                color: $Main-claro;
-            }
+          &:hover {
+            background-color: $Main-oscuro;
+          }
         }
 
-        .cart-clear {
-            text-align: end;
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+
+          to {
+            opacity: 1;
+          }
         }
-
-        .carrit-end {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            #total-price {
-                padding: 1rem;
-                font-size: 2rem;
-            }
-        }
-
-        .cart-cupon {
-            display: flex;
-
-            #coupon-code {
-                padding: 10px 16px;
-                margin: 4px;
-                border: 1px solid gray;
-                border-radius: 4px;
-            }
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-
-            .modal-content {
-                background-color: $Blanco;
-                padding: 20px;
-                border-radius: 10px;
-                text-align: center;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                animation: fadeIn 0.3s ease;
-
-                #confirm-remove-button {
-                    background-color: $Acento;
-                    &:hover{
-                        background-color: $Acentodark;
-                    }
-                }
-                #confirm-clear-button {
-                    background-color: $Acento;
-                    &:hover{
-                        background-color: $Acentodark;
-                    }
-                }
-
-                button {
-                    margin-top: 10px;
-                    padding: 8px 16px;
-                    background-color: $Main-claro;
-                    color: $Blanco;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-
-                    &:hover {
-                        background-color: $Main-oscuro;
-                    }
-                }
-
-                @keyframes fadeIn {
-                    from {
-                        opacity: 0;
-                    }
-
-                    to {
-                        opacity: 1;
-                    }
-                }
-            }
-        }
+      }
     }
+  }
+  .quantity-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .quantity-button {
+      background-color: $Secundario;
+      color: $Blanco;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      height: 1.5rem;
+      width: 1.5rem;
+
+      &:disabled {
+        background-color: $Main-oscuro;
+        cursor: not-allowed;
+      }
+
+      &:hover {
+        background-color: $Acento;
+      }
+    }
+
+    .quantity-input {
+      width: 1.8rem;
+      height: 1.5rem;
+      text-align: center;
+      font-size: 16px;
+      margin: 0 4px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+  }
 }

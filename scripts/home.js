@@ -1,9 +1,19 @@
-import { productos } from './productos.js';
-
 document.addEventListener('DOMContentLoaded', () => {
     const carouselWrapper = document.getElementById('carousel-wrapper');
 
-    function mostrarDestacados() {
+    // Obtener productos desde el archivo JSON
+    async function obtenerProductos() {
+        try {
+            const response = await fetch('../data/products.json');  // Asegúrate de poner la ruta correcta de tu archivo
+            const data = await response.json();
+            mostrarDestacados(data);  // Pasamos los productos obtenidos a la función mostrarDestacados
+        } catch (error) {
+            console.error('Error al obtener los productos:', error);
+        }
+    }
+
+    function mostrarDestacados(productos) {
+        // Filtrar los productos destacados
         const productosDestacados = productos.filter(producto => producto.destacado);
 
         productosDestacados.forEach(producto => {
@@ -32,12 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             carouselWrapper.appendChild(slideDiv);
 
-            // Add event listener to the button
+            // Agregar evento al botón "Comprar Ahora"
             const buyNowButton = slideDiv.querySelector('.buy-now');
             buyNowButton.addEventListener('click', () => buyNow(producto));
         });
 
-        // Initialize Swiper
+        // Inicializar Swiper
         new Swiper('.swiper-container', {
             loop: true,
             centeredSlides: true,
@@ -51,13 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 modifier: 1.5,
                 slideShadows: true
             },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
             pagination: {
                 el: '.swiper-pagination',
-                clickable: true,
+                clickable: false,
             },
             autoplay: {
                 delay: 5000,
@@ -77,23 +83,18 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = './pages/carrito.html';
     }
 
-    mostrarDestacados();
+    // Llamar a la función para obtener productos
+    obtenerProductos();
 
-    //swiper de galeria
+    // swiper de galería
     new Swiper('.swiper-gallery', {
         loop: true,
         centeredSlides: true,
         slidesPerView: 1,
-        spaceBetween: 10,
+        spaceBetween: 1,
 
         autoplay: {
             delay: 7000,
-            disableOnInteraction: false,
-        },
-
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
         },
     });
 

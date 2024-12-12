@@ -68,145 +68,232 @@
     justify-content: space-between;
 
     transition: opacity 0.3s ease, transform 0.3s ease;
-
-    img {
-      border-radius: 4px;
-      width: 100%;
-      height: 60%;
-      object-fit: cover;
-    }
+    opacity: 0;
 
     &.fade-in {
       transform: translateY(0);
       opacity: 1;
     }
-  }
 
-  &.fade-out {
-    opacity: 0;
-  }
-
-  .quantity-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 12px;
-
-    .quantity-btn {
-      background-color: $Secundario;
-      color: $Blanco;
-      border: none;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 4px;
-      height: 1.5rem;
-      width: 1.5rem;
-
-      &:disabled {
-        background-color: $Main-oscuro;
-        cursor: not-allowed;
-      }
-
-      &:hover {
-        background-color: $Acento;
-      }
-    }
-
-    .quantity-input {
-      width: 1.8rem;
-      height: 1.5rem;
-      text-align: center;
-      font-size: 16px;
-      margin: 0 4px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-    }
-  }
-
-  .button-container {
-    margin-top: 16px;
-    display: flex;
-
-    .card-button {
-      display: flex;
-      justify-content: center;
-      background-color: $Main-claro;
-      color: $Blanco;
-      border: none;
-      padding: 10px 16px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 4px;
-      margin: 4px;
+    /* Contenedor del slider */
+    .slider-gallery-content {
+      position: relative;
       width: 100%;
-      flex: 1;
-      @include hover-transition(background-color, 0.3s, ease-in-out);
-    }
+      height: 300px;
+      overflow: hidden;
+      border-radius: 4px;
 
-    .cart-add {
+      .slider-img-gallery {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+
+        &.active {
+          opacity: 1;
+          z-index: 1;
+        }
+      }
+
+      .slider-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: $Blanco;
+        border: none;
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        display: none;
+        z-index: 2;
+        border-radius: 4px;
+      }
+
+      .slider-button-prev {
+        left: 10px;
+      }
+
+      .slider-button-next {
+        right: 10px;
+      }
+
       &:hover {
-        background-color: $Secundario;
+        .slider-button {
+          display: block;
+
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+          }
+        }
       }
     }
 
-    .buy-now {
-      background-color: $Secundario;
-      flex: 5;
-      justify-content: center;
-      align-items: center;
-      height: auto;
-      width: auto;
-      border: 2px solid $Secundario;
-      font-size: 1rem;
-      font-weight: bold;
-      @include hover-transition(background-color, 0.3s, ease-in-out);
+    &.fade-out {
+      opacity: 0;
+    }
 
-      &:hover {
-        background-color: $Blanco;
-        color: $Secundario;
+    .quantity-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 12px;
+
+      .quantity-btn {
+        background-color: $Secundario;
+        color: $Blanco;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+        height: 1.5rem;
+        width: 1.5rem;
+
+        &:disabled {
+          background-color: $Main-oscuro;
+          cursor: not-allowed;
+        }
+
+        &:hover {
+          background-color: $Acento;
+        }
+      }
+
+      .quantity-input {
+        width: 1.8rem;
+        height: 1.5rem;
+        text-align: center;
+        font-size: 16px;
+        margin: 0 4px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+    }
+
+    .button-container {
+      margin-top: 16px;
+      display: flex;
+
+      .card-button {
+        display: flex;
+        justify-content: center;
+        background-color: $Main-claro;
+        color: $Blanco;
+        border: none;
+        padding: 10px 16px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+        margin: 4px;
+        width: 100%;
+        flex: 1;
+        @include hover-transition(background-color, 0.3s, ease-in-out);
+      }
+
+      .cart-add {
+        .tooltip {
+          position: absolute;
+          background-color: $Main-oscuro;
+          color: $Blanco;
+          padding: 5px 10px;
+          border-radius: 4px;
+          font-size: 12px;
+          white-space: nowrap;
+          top: -35px; 
+          left: 60%;
+          transform: translateX(-50%) translateY(10px);
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.3s ease, transform 0.3s ease;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tooltip.show {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+        }
+        
+        .tooltip::before {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 40%;
+          transform: translateX(-50%);
+          border-width: 5px;
+          border-style: solid;
+          border-color: $Main-oscuro transparent transparent transparent;
+        }
+        
+        &:hover {
+          background-color: $Secundario;
+        }
+      }
+
+      .buy-now {
+        background-color: $Secundario;
+        flex: 5;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        width: auto;
+        border: 2px solid $Secundario;
+        font-size: 1rem;
+        font-weight: bold;
+        @include hover-transition(background-color, 0.3s, ease-in-out);
+
+        &:hover {
+          background-color: $Blanco;
+          color: $Secundario;
+        }
       }
     }
   }
+
 }
 
-/* Contenedor de las notificaciones */
-.notification-container {
+
+
+/* Notificación flotante */
+.floating-notification {
   position: fixed;
   top: 20px;
   right: 20px;
-  width: 300px;
-  z-index: 1000;
-}
-
-/* Estilo de la notificación */
-.notification {
   background-color: $Blanco;
   color: $Main-claro;
-  padding: 10px 15px;
-  margin-bottom: 10px;
+  padding: 12px 20px;
   border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  font-size: 14px;
-  animation: slideIn 0.5s ease, fadeOut 0.5s ease 2.5s forwards;
-  opacity: 1;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+  z-index: 1000;
+  animation: fade-in 0.5s, fade-out 0.5s 1.5s forwards;
 }
 
-/* Animación de entrada */
-@keyframes slideIn {
+/* Animación de entrada y salida para la notificación */
+@keyframes fade-in {
   from {
-      transform: translateY(-20px);
-      opacity: 0;
+    opacity: 0;
+    transform: translateY(-10px);
   }
+
   to {
-      transform: translateY(0);
-      opacity: 1;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Animación de salida */
-@keyframes fadeOut {
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   to {
-      opacity: 0;
-      transform: translateY(-20px);
+    opacity: 0;
+    transform: translateY(-10px);
   }
 }
