@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Obtener productos desde el archivo JSON
     async function obtenerProductos() {
         try {
-            const response = await fetch('../data/products.json');
+            const response = await fetch('.././data/products.json');
             const data = await response.json();
             mostrarDestacados(data); 
         } catch (error) {
