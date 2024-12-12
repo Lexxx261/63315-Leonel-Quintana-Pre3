@@ -2,16 +2,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselWrapper = document.getElementById('carousel-wrapper');
 
     // Obtener productos desde el archivo JSON
+    // async function obtenerProductos() {
+    //     try {
+    //         const response = await fetch('../data/products.json');
+    //         const data = await response.json();
+    //         mostrarDestacados(data); 
+    //     } catch (error) {
+    //         console.error('Error al obtener los productos:', error);
+    //     }
+    // }
     async function obtenerProductos() {
         try {
-            const response = await fetch('.././data/products.json');
-            const data = await response.json();
-            mostrarDestacados(data); 
+          const response = await fetch('../data/products.json');
+          if (!response.ok) {
+            throw new Error('No se pudo encontrar el archivo JSON');
+          }
+          const data = await response.json();
+          mostrarDestacados(data);
         } catch (error) {
-            console.error('Error al obtener los productos:', error);
+          console.error('Error al obtener los productos:', error);
         }
-    }
-
+      }
     function mostrarDestacados(productos) {
         // Filtrar los productos destacados
         const productosDestacados = productos.filter(producto => producto.destacado);
