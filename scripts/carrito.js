@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'DESC10': 10,   // 10% de descuento
         'DESC20': 20,   // 20% de descuento
     };
-   
+
     // Función para renderizar el carrito
     function renderCart() {
         cartContainer.innerHTML = '';
@@ -237,18 +237,100 @@ document.addEventListener('DOMContentLoaded', () => {
     // Evento para finalizar la compra
     const purchaseModal = document.getElementById('purchase-modal');
     const closeModalButton = document.getElementById('close-modal-button');
+    const checkoutModal = document.getElementById('checkout-modal');
+    const closeCheckoutModalButton = document.getElementById('close-checkout-modal');
+    const checkoutForm = document.getElementById('checkout-form');
 
     checkoutButton.addEventListener('click', () => {
         if (Object.keys(cart).length === 0) {
             alert('El carrito está vacío. Agrega productos antes de finalizar la compra.');
             return;
         }
-        purchaseModal.style.display = 'flex';
+        checkoutModal.style.display = 'flex';
+    });    
 
-        localStorage.removeItem('cart');
-        cart = {};
-        renderCart();
+    closeCheckoutModalButton.addEventListener('click', () => {
+        checkoutModal.style.display = 'none';
     });
+    // Calcular la fecha y hora mínima
+    const now = new Date();
+    const minDate = new Date(now.getTime() + 36 * 60 * 60 * 1000);
+
+    const minDateStr = minDate.toISOString().split('T')[0];
+    const minTimeStr = minDate.toTimeString().split(' ')[0].substring(0,5);
+
+    // Inicializar Flatpickr para la fecha
+    flatpickr("#fecha", {
+        altInput: true,
+        altFormat: "d/m/Y",
+        dateFormat: "Y-m-d",
+        minDate: minDate,
+        disable: [
+            function(date) {
+                return (date.getDay() === 0);
+            }
+            // Agrega más condiciones para bloquear fechas si es necesario
+        ],
+        onChange: function(selectedDates, dateStr, instance) {
+            // Obtener la fecha seleccionada
+            const selectedDate = selectedDates[0];
+            const today = new Date();
+            const isMinDate = selectedDate.toDateString() === minDate.toDateString();
+
+            // Configurar las opciones de hora basadas en la fecha seleccionada
+            flatpickr("#hora", {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                time_24hr: true,
+                minuteIncrement: 30,
+                minTime: isMinDate ? minDateStr.substring(0,5) : "09:00",
+                maxTime: "18:00",
+            });
+        }
+    });
+    checkoutForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+    
+        const nombre = document.getElementById('nombre').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const celular = document.getElementById('celular').value.trim();
+        const fecha = document.getElementById('fecha').value;
+        const hora = document.getElementById('hora').value;
+        const direccion = document.getElementById('direccion').value.trim();
+        const errorMessage = document.getElementById('error-message');
+    
+        if (!nombre || !email || !celular || !fecha || !hora || !direccion) {
+            errorMessage.style.display = 'block';
+            errorMessage.textContent = 'Todos los campos son obligatorios.';
+        } else {
+            errorMessage.style.display = 'none';
+    
+            // Mostrar el modal de agradecimiento
+            purchaseModal.style.display = 'flex';
+            checkoutModal.style.display = 'none';
+    
+            localStorage.removeItem('cart');
+            cart = {};
+            renderCart();
+            checkoutForm.reset();
+        }
+    });
+
+    closeModalButton.addEventListener('click', () => {
+        purchaseModal.style.display = 'none';
+        window.location.href = '../index.html';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === checkoutModal) {
+            checkoutModal.style.display = 'none';
+        }
+        if (event.target === purchaseModal) {
+            purchaseModal.style.display = 'none';
+        }
+    });
+
     //-----------------------------------------------------------------------//
 
     // Redirige al inicio

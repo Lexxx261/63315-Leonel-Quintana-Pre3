@@ -41,7 +41,6 @@
       .text-p {
         @include font-mod(2rem, 500, $Blanco);
         text-align: center;
-        line-height: 10px;
       }
     }
   }
@@ -56,7 +55,7 @@
   background-position: center;
   @include spacing(padding, 20px);
   height: 100%;
-
+  
   .nos {
     display: flex;
     align-items: center;

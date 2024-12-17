@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 
 <body>
@@ -42,8 +45,49 @@
     </header>
 
     <main class="cart-content">
-        <h1>Detalle de Carrito</h1>
+        <div id="checkout-modal" class="modal">
+            <div class="modal-content animate">
+                <form id="checkout-form">
+                    <h2 class="checkout-h2">Finalizar Compra</h2>
+                    <div class="checkout-form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" pattern="[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+"
+                            placeholder="Juan Perez" required>
 
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="info@unatentacion.uy" required>
+
+                        <label for="celular">Celular:</label>
+                        <input type="tel" id="celular" name="celular" pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
+                            placeholder="099123456" required>
+                    </div>
+
+                    <div class="checkout-select-day">
+                        <label for="fecha">Fecha:</label>
+                        <input type="text" id="fecha" name="fecha" required>
+                
+                        <label for="hora">Hora:</label>
+                        <input type="text" id="hora" name="hora" required>
+                    </div>
+
+                    <div class="checkout-direction">
+                        <label for="direccion">Dirección de Entrega:</label>
+                        <input type="text" id="direccion" name="direccion"
+                            placeholder="Agraciada 3187 esq. Bulevar Artigas" required>
+                    </div>
+                    <p id="error-message" style="color: red; display: none;">Debe rellenar todos los campos
+                        obligatorios.</p>
+
+                    <div class="checkout-button-end">
+                        <button type="submit">Finalizar Compra</button>
+                        <button type="button" id="close-checkout-modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <h1>Detalle de Carrito</h1>
         <div id="cart-container">
         </div>
 
@@ -60,7 +104,7 @@
 
             <div class="carrit-end">
                 <p id="total-price">Importe Total: $0</p>
-                <button id="checkout-button">Finalizar Compra</button>
+                <button id="checkout-button">Hacer Pedido</button>
             </div>
             <!-- Mensaje eliminar producto -->
             <div id="remove-product-modal" class="modal">
@@ -121,6 +165,7 @@
 
     <script type="module" src="../scripts/carrito.js"></script>
     <script type="module" src="../scripts/global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 </body>
 

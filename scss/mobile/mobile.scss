@@ -1,3 +1,20 @@
-@media (max-width: 390px){
-    
+@media (max-width: 390px) {
+    .present-content {
+        .text-m {
+            font-size: 10px !important;
+        }
+
+        .text-p {
+            font-size: 10px !important;
+        }
+    }
+
+
+    .nosotros-content {
+        .nos {
+            .igfeed {
+                width: 20%;
+            }
+        }
+    }
 }
