@@ -19,30 +19,33 @@
 
 <body>
     <header>
-        <nav class="navbar nav-hidden">
+        <nav class="navbar">
             <img class="logo-img" src="./img/logo-unat.png" href="index.html" alt="Logo">
             <div class="Unat titulo">Una Tentación
                 <p>Repostería</p>
             </div>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="./pages/tienda.html">Tienda</a></li>
                 <li><a href="index.html#destacado">Destacados</a></li>
                 <li><a href="index.html#nosotros">Nosotros</a></li>
             </ul>
-            <button class="cart-all"><svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size"
-                    viewBox="0 0 24 24" fill="currentColor" width="30" height="30">
-                    <path
-                        d="M6 2a1 1 0 0 1 .993 .883l.007 .117v1.068l13.071 .935a1 1 0 0 1 .929 1.024l-.01 .114l-1 7a1 1 0 0 1 -.877 .853l-.113 .006h-12v2h10a3 3 0 1 1 -2.995 3.176l-.005 -.176l.005 -.176c.017 -.288 .074 -.564 .166 -.824h-5.342a3 3 0 1 1 -5.824 1.176l-.005 -.176l.005 -.176a3.002 3.002 0 0 1 1.995 -2.654v-12.17h-1a1 1 0 0 1 -.993 -.883l-.007 -.117a1 1 0 0 1 .883 -.993l.117 -.007h2zm0 16a1 1 0 1 0 0 2a1 1 0 0 0 0 -2zm11 0a1 1 0 1 0 0 2a1 1 0 0 0 0 -2z">
-                    </path>
-                </svg>
-                <span id="cart-count">0</span>
-            </button>
+            <div class="right-head">
+                <button class="cart-all"><svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size"
+                        x-bind:height="size" viewBox="0 0 24 24" fill="currentColor" width="30" height="30">
+                        <path
+                            d="M6 2a1 1 0 0 1 .993 .883l.007 .117v1.068l13.071 .935a1 1 0 0 1 .929 1.024l-.01 .114l-1 7a1 1 0 0 1 -.877 .853l-.113 .006h-12v2h10a3 3 0 1 1 -2.995 3.176l-.005 -.176l.005 -.176c.017 -.288 .074 -.564 .166 -.824h-5.342a3 3 0 1 1 -5.824 1.176l-.005 -.176l.005 -.176a3.002 3.002 0 0 1 1.995 -2.654v-12.17h-1a1 1 0 0 1 -.993 -.883l-.007 -.117a1 1 0 0 1 .883 -.993l.117 -.007h2zm0 16a1 1 0 1 0 0 2a1 1 0 0 0 0 -2zm11 0a1 1 0 1 0 0 2a1 1 0 0 0 0 -2z">
+                        </path>
+                    </svg>
+                    <span id="cart-count">0</span>
+                </button>
+                <div class="hamburger">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
         </nav>
     </header>
 
@@ -68,7 +71,8 @@
                 <div class="swiper-slide"><img src="./img/Muff.webp" alt="Slide 3">
                     <div class="present-content">
                         <h2 class="text-m">Regala Dulzura</h2>
-                        <p class="text-p">Endulza momentos especiales con el regalo perfecto: postres únicos y deliciosos.</p>
+                        <p class="text-p">Endulza momentos especiales con el regalo perfecto: postres únicos y
+                            deliciosos.</p>
                     </div>
                 </div>
             </div>
@@ -92,7 +96,34 @@
             </div>
 
             <div class="nosotros-text">
-                <h2>Emprendimiento</h2>
+                <div class="icon-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+                        <path d="M9 10h-3a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h10.802a1 1 0 0 1 .984 1.179l-1.786 9.821">
+                        </path>
+                        <path d="M8 4l2 11"></path>
+                        <path d="M11 15h4a3 3 0 0 1 3 3v2a1 1 0 0 1 -1 1h-8a1 1 0 0 1 -1 -1v-2a3 3 0 0 1 3 -3z"></path>
+                        <path d="M12 4v-1h2v1"></path>
+                        <path d="M13 18v.01"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+                        <path
+                            d="M19 14.083c0 4.154 -2.966 6.74 -7 6.917c-4.2 0 -7 -2.763 -7 -6.917c0 -5.538 3.5 -11.09 7 -11.083c3.5 .007 7 5.545 7 11.083z">
+                        </path>
+                        <path d="M12 3l-1.5 5l3.5 2.5l-2 3.5"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+                        <path
+                            d="M8 3h8a2 2 0 0 1 2 2v1.82a5 5 0 0 0 .528 2.236l.944 1.888a5 5 0 0 1 .528 2.236v5.82a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-5.82a5 5 0 0 1 .528 -2.236l1.472 -2.944v-3a2 2 0 0 1 2 -2z">
+                        </path>
+                        <path d="M14 15m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                        <path d="M6 21a2 2 0 0 0 2 -2v-5.82a5 5 0 0 0 -.528 -2.236l-1.472 -2.944"></path>
+                        <path d="M11 7h2"></path>
+                    </svg>
+                </div>
+                <h2 class="emp-text">Emprendimiento</h2>
                 <p>En la repostería, encuentro mi pasión y dedicación fusionadas en cada dulce detalle. En cada creación
                     expreso mi amor por el arte culinario y la belleza en cada sabor.</p>
             </div>
