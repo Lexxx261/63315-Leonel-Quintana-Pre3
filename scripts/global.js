@@ -42,5 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCartCount();
     });
     updateCartCount();
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        // Alterna clase para transformar hamburguesa en "X"
+        hamburger.classList.toggle('active');
+        // Alterna clase para mostrar el menú
+        navLinks.classList.toggle('open');
+    });
+
 
 });
+

@@ -1,6 +1,7 @@
 /* Tamaño reducido de la barra de desplazamiento */
 ::-webkit-scrollbar {
-  width: 5px; /* Tamaño reducido inicial */
+  width: 5px;
+  /* Tamaño reducido inicial */
 }
 
 /* Estilo del fondo de la barra de desplazamiento */
@@ -12,15 +13,17 @@
 ::-webkit-scrollbar-thumb {
   background: $Main-claro;
   border-radius: 10px;
-  transition: width 0.3s ease; /* Suavizado al hacer hover */
+  transition: width 0.3s ease;
+  /* Suavizado al hacer hover */
 }
 
 /* Agrandar el thumb al hacer hover en la barra */
 ::-webkit-scrollbar-thumb:hover {
-  background: $Acento; /* Cambio de color para mayor visibilidad */
+  background: $Acento;
+  /* Cambio de color para mayor visibilidad */
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
@@ -28,18 +31,21 @@ body {
   font-family: $fuente-principal;
   font-weight: 500;
   color: $Main-oscuro;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 89%, rgba(245,245,245,1) 100%);
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 89%, rgba(245, 245, 245, 1) 100%);
 }
+
 h1 {
   @include font-mod(5rem, bold, $Main-oscuro);
   text-align: center;
 }
+
 h2 {
-    @include font-mod(4rem, bold, $Main-oscuro);
+  @include font-mod(4rem, bold, $Main-oscuro);
   text-align: center;
   letter-spacing: 1rem;
   text-transform: uppercase;
 }
+
 // boton wpp
 .whatsapp-button {
   position: fixed;
@@ -59,6 +65,7 @@ h2 {
     background-color: #188b43;
   }
 }
+
 // boton ig
 .instagram-button {
   position: fixed;

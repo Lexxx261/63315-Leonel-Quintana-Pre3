@@ -1,46 +1,67 @@
 .gallery {
-  width: 100%;
   height: 100vh;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  z-index: 0;
 
-  video,
-  img {
+  .swiper-gallery {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-  }
 
-  .swiper-slide {
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
+
+    .swiper-wrapper {
       height: 100%;
-      background: rgba(0, 0, 0, 0.2);
-      z-index: 1;
-    }
-    .present-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: $Blanco;
-      text-align: center;
-      z-index: 2;
 
-      .text-m {
-        @include titulo-center;
-        @include font-mod(5.5rem, bold, $Blanco);
-        text-transform: none;
-      }
 
-      .text-p {
-        @include font-mod(2rem, 500, $Blanco);
-        text-align: center;
+      .swiper-slide {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        background: #000;
+        /* Fondo de seguridad si el contenido no carga */
+        overflow: hidden;
+
+        video,
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.2);
+          z-index: 1;
+        }
+
+        .present-content {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: $Blanco;
+          text-align: center;
+          z-index: 2;
+
+          .text-m {
+            @include titulo-center;
+            @include font-mod(5.5rem, bold, $Blanco);
+            text-transform: none;
+          }
+
+          .text-p {
+            @include font-mod(2rem, 500, $Blanco);
+            text-align: center;
+          }
+        }
       }
     }
   }
@@ -50,12 +71,11 @@
 .nosotros-content {
   display: flex;
   align-items: center;
-  background-image: url(../img/pastry.jpg);
   background-size: cover;
   background-position: center;
   @include spacing(padding, 20px);
   height: 100%;
-  
+
   .nos {
     display: flex;
     align-items: center;
@@ -64,13 +84,11 @@
 
   .nosotros-text {
     @include spacing(padding, 2rem);
-    width: 50%;
-    color: $Blanco;
     font-size: 2rem;
+  }
 
-    h2 {
-      color: $Blanco;
-    }
+  .icon-content {
+    display: none;
   }
 }
 

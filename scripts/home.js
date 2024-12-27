@@ -2,15 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselWrapper = document.getElementById('carousel-wrapper');
 
     // Obtener productos desde el archivo JSON
-    // async function obtenerProductos() {
-    //     try {
-    //         const response = await fetch('../data/products.json');
-    //         const data = await response.json();
-    //         mostrarDestacados(data); 
-    //     } catch (error) {
-    //         console.error('Error al obtener los productos:', error);
-    //     }
-    // }
     async function obtenerProductos() {
         try {
           const response = await fetch('./data/products.json');
@@ -58,11 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
             buyNowButton.addEventListener('click', () => buyNow(producto));
         });
 
-        // Inicializar Swiper
+        // Swiper destacados
         new Swiper('.swiper-container', {
             loop: true,
             centeredSlides: true,
-            slidesPerView: 3,
+            slidesPerView: 1,
             spaceBetween: 10,
             effect: 'coverflow',
             coverflowEffect: {
@@ -79,6 +70,16 @@ document.addEventListener('DOMContentLoaded', () => {
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
             },
         });
     }

@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&display=swap"
         rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 
 <body>
@@ -33,14 +33,21 @@
                 <li><a href="../index.html#destacado">Destacados</a></li>
                 <li><a href="../index.html#nosotros">Nosotros</a></li>
             </ul>
-            <button class="cart-all""><svg xmlns=" http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size"
-                viewBox="0 0 24 24" fill="currentColor" width="30" height="30">
-                <path
-                    d="M6 2a1 1 0 0 1 .993 .883l.007 .117v1.068l13.071 .935a1 1 0 0 1 .929 1.024l-.01 .114l-1 7a1 1 0 0 1 -.877 .853l-.113 .006h-12v2h10a3 3 0 1 1 -2.995 3.176l-.005 -.176l.005 -.176c.017 -.288 .074 -.564 .166 -.824h-5.342a3 3 0 1 1 -5.824 1.176l-.005 -.176l.005 -.176a3.002 3.002 0 0 1 1.995 -2.654v-12.17h-1a1 1 0 0 1 -.993 -.883l-.007 -.117a1 1 0 0 1 .883 -.993l.117 -.007h2zm0 16a1 1 0 1 0 0 2a1 1 0 0 0 0 -2zm11 0a1 1 0 1 0 0 2a1 1 0 0 0 0 -2z">
-                </path>
-                </svg>
-                <span id="cart-count">0</span>
-            </button>
+            <div class="right-head">
+                <button class="cart-all"><svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size"
+                        x-bind:height="size" viewBox="0 0 24 24" fill="currentColor" width="30" height="30">
+                        <path
+                            d="M6 2a1 1 0 0 1 .993 .883l.007 .117v1.068l13.071 .935a1 1 0 0 1 .929 1.024l-.01 .114l-1 7a1 1 0 0 1 -.877 .853l-.113 .006h-12v2h10a3 3 0 1 1 -2.995 3.176l-.005 -.176l.005 -.176c.017 -.288 .074 -.564 .166 -.824h-5.342a3 3 0 1 1 -5.824 1.176l-.005 -.176l.005 -.176a3.002 3.002 0 0 1 1.995 -2.654v-12.17h-1a1 1 0 0 1 -.993 -.883l-.007 -.117a1 1 0 0 1 .883 -.993l.117 -.007h2zm0 16a1 1 0 1 0 0 2a1 1 0 0 0 0 -2zm11 0a1 1 0 1 0 0 2a1 1 0 0 0 0 -2z">
+                        </path>
+                    </svg>
+                    <span id="cart-count">0</span>
+                </button>
+                <div class="hamburger">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
         </nav>
     </header>
 
@@ -65,7 +72,7 @@
                     <div class="checkout-select-day">
                         <label for="fecha">Fecha:</label>
                         <input type="text" id="fecha" name="fecha" required>
-                
+
                         <label for="hora">Hora:</label>
                         <input type="text" id="hora" name="hora" required>
                     </div>
@@ -97,8 +104,10 @@
             </div>
 
             <div class="cart-cupon">
-                <input type="text" id="coupon-code" placeholder="Ingresa tu cupón">
-                <button id="apply-coupon-button">Aplicar Cupón</button>
+                <div class="cupon-inputs">
+                    <input type="text" id="coupon-code" placeholder="Ingresa tu cupón">
+                    <button id="apply-coupon-button">Aplicar Cupón</button>
+                </div>
                 <p id="coupon-message"></p>
             </div>
 
@@ -110,7 +119,8 @@
             <div id="remove-product-modal" class="modal">
                 <div class="modal-content">
                     <p id="remove-modal-text">¿Seguro que deseas eliminar este producto del carrito?</p>
-                    <button id="confirm-remove-button">Eliminar</button>
+                    <button id="confirm-remove-button">Eliminar
+                    </button>
                     <button id="cancel-remove-button">Cancelar</button>
                 </div>
             </div>
